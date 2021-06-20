@@ -105,12 +105,21 @@ media_output_dri_init (VADriverContextP ctx)
   struct dri_vtable *dri_vtable;
 
   static const struct dso_symbol symbols[] = {
+#if VA_CHECK_VERSION(1,0,0)
+    {"va_dri_get_drawable",
+     offsetof (struct dri_vtable, get_drawable)},
+    {"va_dri_get_rendering_buffer",
+     offsetof (struct dri_vtable, get_rendering_buffer)},
+    {"va_dri_swap_buffer",
+     offsetof (struct dri_vtable, swap_buffer)},
+#else
     {"dri_get_drawable",
      offsetof (struct dri_vtable, get_drawable)},
     {"dri_get_rendering_buffer",
      offsetof (struct dri_vtable, get_rendering_buffer)},
     {"dri_swap_buffer",
      offsetof (struct dri_vtable, swap_buffer)},
+#endif
     {NULL,}
   };
 
