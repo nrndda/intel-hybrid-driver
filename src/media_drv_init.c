@@ -2662,7 +2662,7 @@ dri_init_err:media_driver_terminate (ctx);
     media_drv_free_memory (drv_ctx);
   ctx->pDriverData = NULL;
 
-  return VA_STATUS_ERROR_UNKNOWN;
+  return VA_STATUS_ERROR_OPERATION_FAILED;
 
 }
 
